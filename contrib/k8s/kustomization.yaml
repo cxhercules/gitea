@@ -6,6 +6,7 @@ resources:
 
 patches:
   - deployment-patch.yaml
+  - envoy-patch.yaml
 
 patchesJson6902:
 - target:
@@ -19,6 +20,9 @@ configMapGenerator:
 - name: app-config
   files:
   - app.ini
+- name: envoy-config
+  files:
+  - envoy.yaml
 
 secretGenerator:
 - name: postgres

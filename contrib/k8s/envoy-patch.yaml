@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitea
+spec:
+  template:
+    spec:
+      containers:
+      - name: envoy
+        image: index.docker.io/envoyproxy/envoy-alpine  
+        imagePullPolicy: Always
+        volumeMounts:
+          - mountPath: "/etc/envoy"
+            name: envoy-config-volume
+        ports:
+          - containerPort: 9201
+            name: http
+            protocol: TCP
