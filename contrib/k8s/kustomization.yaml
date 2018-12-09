@@ -4,6 +4,9 @@ resources:
   - volumes.yaml
   - gitea.yml
 
+patches:
+  - deployment-patch.yaml
+
 patchesJson6902:
 - target:
     group: apps
