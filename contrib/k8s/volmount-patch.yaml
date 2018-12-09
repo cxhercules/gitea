@@ -7,3 +7,6 @@
   - name: data
     persistentVolumeClaim:
       claimName: data
+  - name: config-volume
+    configMap:
+      name: app-config

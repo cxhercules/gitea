@@ -5,3 +5,18 @@ metadata:
 spec:
   strategy:
     type: Recreate
+  template:
+    spec:
+      containers:
+      - name: gitea
+        env:
+          - name: "GITEA_CUSTOM"
+            value: "/etc/gitea/custom"
+          - name: "PGPASSWORD"
+            valueFrom:
+              secretKeyRef:
+                name: postgres
+                key: password
+        volumeMounts:
+          - mountPath: "/etc/gitea/custom/conf"
+            name: config-volume

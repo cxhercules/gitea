@@ -14,3 +14,13 @@ patchesJson6902:
     kind: Deployment
     name: gitea
   path: volmount-patch.yaml
+
+configMapGenerator:
+- name: app-config
+  files:
+  - app.ini
+
+secretGenerator:
+- name: postgres
+  commands:
+    password: "gcloud kms decrypt --plaintext-file=- --key default --keyring test --ciphertext-file=psql.secret --location=us-central1 | tr -d '\n'"
