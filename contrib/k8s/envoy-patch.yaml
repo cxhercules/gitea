@@ -13,6 +13,6 @@ spec:
           - mountPath: "/etc/envoy"
             name: envoy-config-volume
         ports:
-          - containerPort: 9201
+          - containerPort: 9211
             name: http
             protocol: TCP
